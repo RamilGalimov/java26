@@ -22,7 +22,17 @@
     </thead>
 </table>
 <p style="margin-left: 1250px; margin-top: -20px;">
-    <a href="/logout">Logout</a>
+    <c:choose>
+        <c:when test="${isLogin eq 1}">
+            <a href="/logout">${login},Logout</a>
+
+        </c:when>
+        <c:otherwise>
+            <a href="/login">Login</a>
+
+        </c:otherwise>
+
+    </c:choose>
 </p>
 <a href="/">На главную</a>
 <br>
@@ -75,24 +85,26 @@
     </c:forEach>
     </thead>
 </table>
-<p style="margin-top: -615px;">
-<form action="/term-create" method="get"><input
-        style="font-family: cursive; border-color: dimgray; background-color: darkgray; width: 320px;margin-left: 750px;"
-        type="submit" value="Создать семестр..."></form>
-<br>
-<form action="/term-modify" method="get">
-    <input type="hidden" name="idTermToModify" value="${selectedTerm.id}">
-    <input
-        style="font-family: cursive; border-color: dimgray; width: 320px;background-color: darkgray; margin-left: 750px;"
-        type="submit" value="Модифицировать текущий семестр..."></form>
-<br>
-<form action="/delete-term" method="get">
-   <input type="hidden" name="idTermToDelete" value="${selectedTerm.id}">
+<c:if test="${role eq 1}">
+    <p style="margin-top: -615px;">
+    <form action="/term-create" method="get"><input
+            style="font-family: cursive; border-color: dimgray; background-color: darkgray; width: 320px;margin-left: 750px;"
+            type="submit" value="Создать семестр..."></form>
+    <br>
+    <form action="/term-modify" method="get">
+        <input type="hidden" name="idTermToModify" value="${selectedTerm.id}">
+        <input
+                style="font-family: cursive; border-color: dimgray; width: 320px;background-color: darkgray; margin-left: 750px;"
+                type="submit" value="Модифицировать текущий семестр..."></form>
+    <br>
+    <form action="/delete-term" method="get">
+        <input type="hidden" name="idTermToDelete" value="${selectedTerm.id}">
 
-    <input
-        style="font-family: cursive; border-color: dimgray; background-color: darkgray; width: 320px;margin-left: 750px;"
-        type="submit" value="Удалить текущий семестр"></form>
-</p>
+        <input
+                style="font-family: cursive; border-color: dimgray; background-color: darkgray; width: 320px;margin-left: 750px;"
+                type="submit" value="Удалить текущий семестр"></form>
+    </p>
+</c:if>
 </body>
 
 </html>

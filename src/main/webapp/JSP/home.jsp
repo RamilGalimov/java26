@@ -38,7 +38,7 @@
 <br>
 <span style="word-spacing: 350px; margin-left: 290px; font-size: 17px;">
     <a href="/students">Студенты</a>
-    <a href="./stranitsa6.html">Дисциплины</a>
+    <a href="/disciplines">Дисциплины</a>
     <a href="/terms">Семестры</a></span>
 </body>
 </html>

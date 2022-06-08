@@ -49,7 +49,7 @@
         <h4>Неверный логин, или пароль, или роль!</h4>
     </c:if>
     <footer>
-        <div>&copy; 2022 Alex Black</div>
+        <div>&copy; 2022 Raimon</div>
     </footer>
 </div>
 </body>

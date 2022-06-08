@@ -41,6 +41,14 @@ public interface IDBManager {
 
     void modifyTerm(String idTermModify, String duration, String[] idsDisc);
 
+    void createDiscipline(String discipline);
+
+    void deleteDiscipline(String id);
+
+    Discipline getDisciplineById(String id);
+
+    void modifyDiscipline(String id, String discipline);
+
 }
 
 

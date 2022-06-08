@@ -21,7 +21,17 @@
     </thead>
 </table>
 <p style="margin-left: 1250px; margin-top: -20px;">
-    <a href="/logout">Logout</a>
+    <c:choose>
+        <c:when test="${isLogin eq 1}">
+            <a href="/logout">${login},Logout</a>
+
+        </c:when>
+        <c:otherwise>
+            <a href="/login">Login</a>
+
+        </c:otherwise>
+
+    </c:choose>
 </p>
 <a href="/">На главную</a>
 <a href="/terms">Назад</a>

@@ -320,4 +320,64 @@ public class DBManager implements IDBManager {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void createDiscipline(String discipline) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.DB_URL_CONNECTION);
+            Statement stmt = conn.createStatement();
+            stmt.execute("INSERT INTO `students_26`.`discipline` (`discipline`) VALUES ('" + discipline + "'); ");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteDiscipline(String id) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.DB_URL_CONNECTION);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `students_26`.`discipline` SET `status` = '0' WHERE (`id` = '" + id + "'); ");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public Discipline getDisciplineById(String id) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.DB_URL_CONNECTION);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select*from discipline where status=1 and id=" + id);
+
+            while (rs.next()) {
+                Discipline discipline = new Discipline();
+                discipline.setId(rs.getInt("id"));
+                discipline.setStatus(1);
+                return discipline;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void modifyDiscipline(String id, String discipline) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.DB_URL_CONNECTION);
+            Statement stmt = conn.createStatement();
+            stmt.execute(" UPDATE `students_26`.`discipline` SET `discipline` = '" + discipline + "' WHERE (`id` = '" + id + "');");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
